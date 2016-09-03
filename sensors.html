@@ -1,0 +1,87 @@
+<html>
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="css/bootstrap.min.css" >
+            <script src="js/jquery.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+            <script src="js/jquery-1.11.3.min.js"></script>
+            <script src="js/jquery.mobile-1.4.5.min.js"></script>
+            <script type="text/javascript" src="js/jquery.cookie.js"></script>
+            <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+            <meta charset="utf-8">
+        </head>
+<body>
+
+<div data-role="page" id="sensors">
+    <div data-role="header">
+        <h1>Мой дом</h1>
+         <a data-role="button" data-inline="true" data-icon="refresh" data-iconpos="notext" onclick="sensors_renew();"></a>
+         <a ><i class="fa  fa-sign-out fa-1x"></i></a>
+            <div data-role="navbar" class="nav">
+                <ul>
+                  <li><a href="#index"><i class="fa fa-dashboard fa-fw"></i> Домой</a></li>
+                  <li><a href="#sensors"><i class="fa fa-bar-chart-o fa-fw"></i> Датчики</a></li>
+                  <li><a href="#lignting"><i class="fa fa-lightbulb-o fa-fw"></i> Свет</a></li>
+                  <li><a href="#kotel"><i class="fa fa-building-o fa-fw"></i> Котёл</a></li>
+                </ul>
+            </div>
+    </div>
+   <div data-role="main" class="ui-content">
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Данные с датчиков</li>
+        <li data-role="list-divider">Улица</li>
+        <li><a href="#temp_sun_outdor"> Температура на солнышке <span class="ui-li-count"><div id="temp_sun_outdor_value"></div></span></a></li>
+        <li><a href="#temp_shadow_outdor"> Температура в тени <span class="ui-li-count"><div id="temp_shadow_outdor_value"></div></span></a></li>
+        <li><a href="#"> Влажность <span class="ui-li-count"><div id="humi_outdor_value"></div></span></a></li>
+        <li><a href="#"> Освещенность <span class="ui-li-count"><div id="light_outdor_value"></div></span></a></li>
+        <li><a href="#"> Давление <span class="ui-li-count"><div id="pressure_outdor_value"></div></span></a></li>
+	<li><a href="#"> Скорость ветра <span class="ui-li-count"><div id="wind_speed_outdor_value"></div></span></a></li>
+        <li data-role="list-divider">Дом</li>
+        <li><a href="#">Температура <span class="ui-li-count"><div id="temp_indor_value"></div></span></a></li>
+        <li><a href="#">Влажность <span class="ui-li-count"><div id="humi_indor_value"></div></span></a></li>
+        <li><a href="#kotel">Котёл <span class="ui-li-count"><div id="temp_kotel_value"></div></span></a></li>
+     </ul>
+  </div>
+</div>
+<script>
+$.ajaxSetup({
+    url: 'api/',
+    async: false,
+    type: 'GET',
+    dataType: 'json',
+    data: { 'tooken':$.cookie("tooken") },
+    beforeSend: function() {
+                 if (!($.cookie('tooken'))) {
+                   $(window).attr('location','login.html');
+                 }
+             },
+             success: function(data){
+               if(data.code == "403"){
+                   $(window).attr('location','login.html');
+               }
+             }
+});
+var ids = ["#temp_sun_outdor_value", "#temp_shadow_outdor_value", "#humi_outdor_value", "#pressure_outdor_value", "#wind_speed_outdor_value", "#temp_indor_value", "#humi_indor_value", "#temp_kotel_value"];
+var names = ["28_000005475d6d", "28_00000448abc3", "35_000002793ac7", "81_000000000001", "28_0a020b08010d", "28_0415a30f63ff", "35_0000034fab33", "28_000004e4fd40"];
+var vals = [" °C", " °C", " %", " ммРтСт", " м/с", " °C", "%", " °C"];
+
+for (var i = 0; i < ids.length; i++) {
+ $.ajax({
+     data: {'dev':names[i],'data':'now'},
+         success: function(data){
+           if(data.code == "200"){
+              $(ids[i]).html(Math.round(data.data*10)/10+vals[i]);
+            }
+          }
+ });
+ }
+
+// var key ="act";
+// var s = window.location.search;
+// s = s.match(new RegExp(key + '=([^&=]+)'));
+// alert(s[1]);
+</script>
+
+</body>
+</html>

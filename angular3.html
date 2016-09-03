@@ -1,0 +1,21 @@
+<DOCTYPE html>
+  <html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="angular/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="customerCtrl">
+      {{ myData }}
+
+    </div>
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('customerCtrl', function($scope,$http){
+      $http.get("http://192.168.1.220/api/api/?tooken=c0bb238099b3e15732d971566d733ccd84fc9e40f7f559419e07f8918d8be111&dev=28_00000448abc3&data=now").success(function(responce) {
+        $scope.myData = responce;
+      })
+    });
+    </script>
+  </body>
+  </html>

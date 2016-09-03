@@ -1,0 +1,235 @@
+  <DOCTYPE html>
+    <html lang="ru-RU">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://use.fontawesome.com/4526cf3ab4.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-touch.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.min.js"></script>
+      <script type="text/javascript" src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.js"></script>
+      <link rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.css">
+      <link rel="stylesheet" href="https://material.angularjs.org/1.1.0/docs.css">
+      <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    </head>
+    <body ng-controller="AppCtrl as appCtrl" ng-cloak="" class="gridListdemoBasicUsage" ng-app="MyApp"  md-swipe-right="openSidenav('left')" md-swipe-left="closeSidenav('left')">
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+      <md-toolbar class="md-theme-indigo">
+
+      </md-toolbar>
+      <md-content layout-margin>
+        <p>
+          This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+        </p>
+
+      </md-content>
+    </md-sidenav>
+
+        <md-toolbar class="md-hue-2">
+     <div class="md-toolbar-tools">
+       <md-button class="md-icon-button" aria-label="Settings" ng-click="openSidenav('left')" class="md-raised">
+         <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+       </md-button>
+       <h2>
+         <span>Мой дом</span>
+       </h2>
+       <span flex=""></span>
+       <md-button class="md-icon-button" aria-label="Favorite">
+
+       </md-button>
+       <md-button class="md-icon-button" aria-label="More">
+         <i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+       </md-button>
+     </div>
+   </md-toolbar>
+   <md-grid-list md-cols-xs="2" md-cols-sm="2" md-cols-md="2" md-cols-gt-md="2" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="8px" md-gutter-gt-sm="8px" ng-style="{'margin-bottom': '0px'}">
+
+     <md-grid-tile ng-style="{'background': '#FBC02D'}">
+       <a href="#">
+       <img src="plug.svg" style="weight: 50%; height: 50%; margin-bottom:25px;">
+       </a>
+       <md-grid-tile-footer layout-align="center center">
+         <span>3600 w/h</span>
+       </md-grid-tile-footer>
+     </md-grid-tile>
+     <md-grid-tile ng-style="{'background': '#00897B'}">
+       <a href="#">
+       <img src="happy.svg" style="weight: 50%; height: 50%; ">
+       </a>
+     </md-grid-tile>
+   </md-grid-list>
+  <md-grid-list md-cols-xs="3" md-cols-sm="3" md-cols-md="3" md-cols-gt-md="3" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="8px" md-gutter-gt-sm="8px" ng-style="{'margin-top': '0px'}">
+
+    <md-grid-tile ng-style="{'background': '#00ACC1'}">
+      <a href="#">
+      <img src="temperature.svg" style="weight: 50%; height: 50%; margin-bottom:25px;">
+      </a>
+      <md-grid-tile-footer layout-align="center center">
+        <span>{{ data[0] }} °C</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-style="{'background': '#0288D1'}">
+      <a href="#">
+      <img src="drop-silhouette.svg" style="weight: 50%; height: 50%; margin-bottom:25px;">
+      </a>
+      <md-grid-tile-footer layout-align="center center">
+        <span>{{ data[1] }} %</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-style="{'background': '#C0CA33'}">
+      <a href="#">
+      <img src="pressure.svg" style="weight: 50%; height: 50%; margin-bottom:25px;">
+      </a>
+      <md-grid-tile-footer layout-align="center center">
+        <span>{{ data[2] }} mmHg</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile ng-style="{'background': '#00ACC1'}">
+      <a href="#">
+      <img src="temperature.svg" style="weight: 50%; height: 50%; margin-bottom:25px;">
+      </a>
+      <md-grid-tile-footer layout-align="center center">
+        <span>{{ data[3] }} °C</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-style="{'background': '#0288D1'}">
+      <a href="#">
+      <img src="drop-silhouette.svg" style="weight: 50%; height: 50%; margin-bottom:25px;">
+      </a>
+      <md-grid-tile-footer layout-align="center center">
+        <span>{{ data[4] }} %</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-style="{'background': '#8E24AA'}">
+      <a href="#">
+      <img src="radiator.svg" style="weight: 50%; height: 50%; margin-bottom:25px;">
+      </a>
+      <md-grid-tile-footer layout-align="center center">
+        <span>{{ data[5] }} °C</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile ng-style="{'background': '#3949AB'}">
+      <a href="#">
+      <img src="wind.svg" style="weight: 50%; height: 50%; margin-bottom:25px;">
+      </a>
+      <md-grid-tile-footer layout-align="center center">
+        <span>{{ data[6] }} m/c</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-style="{'background': '#FF5722'}">
+      <a href="#">
+      <img src="light-bulb.svg" style="weight: 50%; height: 50%; margin-bottom:25px;">
+      </a>
+      <md-grid-tile-footer layout-align="center center">
+        <span>{{lamp}}/4</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile ng-style="{'background': '#FFB300'}" >
+      <img src="sun.svg" style="weight: 50%; height: 50%; margin-bottom:25px;">
+      <md-grid-tile-footer layout-align="center center">
+        <span>300 lx</span>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+-->
+      <script>
+var names = ["28_00000448abc3", "35_000002793ac7", "81_000000000001", "28_0415a30f63ff", "35_0000034fab33", "28_000004e4fd40", "28_0a020b08010d"];
+var app = angular.module('MyApp',['ngMaterial', 'ngMessages', 'ngTouch', 'ngCookies']);
+var datas =[];
+var lamp = "0";
+app.controller('AppCtrl', function($scope, $http, $cookies, $mdSidenav, $window){
+
+    $scope.openSidenav = function(menuId) {
+        $mdSidenav(menuId).open();
+    };
+    $scope.closeSidenav = function(menuId) {
+        $mdSidenav(menuId).close();
+    };
+
+$scope.tooken = $cookies.get('tooken');
+if (!$scope.tooken) {
+   $window.location.href = 'login.html';
+};
+$scope.user = $cookies.get('user');
+if (!$scope.user) {
+   $window.location.href = 'login.html';
+};
+$.ajaxSetup({
+    url: 'http://api.barvius.pp.ua',
+    async: false,
+    type: 'GET',
+    dataType: 'json',
+    data: { 'tooken': $scope.tooken }
+});
+for (var i = 0; i < names.length; i++) {
+ $.ajax({
+     data: {'dev':names[i],'data':'now'},
+         success: function(data){
+           if(data.code == "200"){
+              datas[i] = Math.round(data.data*10)/10;
+            }
+            if(data.code == "403"){
+                $window.location.href = 'login.html';
+            }
+          }
+ });
+ };
+ $scope.data = datas;
+ for (var i = 1; i < 5; i++) {
+  $.ajax({
+      data: {'lamp': i ,'lamp_act':'status'},
+          success: function(data){
+            if(data.code == "200"){
+              if (data.data.value == 0) {
+                //те включено/|\
+                lamp++;
+              }
+             }
+             if(data.code == "403"){
+                 $window.location.href = 'login.html';
+             }
+           }
+  });
+  };
+  $scope.lamp = lamp;
+ });
+      </script>
+      <style>
+      html body {
+        background-color: #37474F;
+      }
+      md-grid-tile-footer.ng-scope {
+        height: 25px;
+
+      }
+
+      .gridListdemoBasicUsage md-grid-list {
+        margin: 8px; }
+
+      .gridListdemoBasicUsage md-grid-tile {
+        transition: all 400ms ease-out 50ms; }
+      .gridListdemoBasicUsage {
+         font-size: 11pt;
+        }
+
+        .md-sidenav-left .md-theme-indigo, .md-sidenav-left .nav-theme  md-toolbar.md-default-theme.md-hue-2:not(.md-menu-toolbar), md-toolbar.md-hue-2:not(.md-menu-toolbar) {
+    background-color: #263238;
+}
+
+      /*
+      Copyright 2016 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+      */
+      </style>
+    </body>
+    </html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" id="login" placeholder="Логин" type="text" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="password" placeholder="Пароль" type="password">
+                                </div>
+                                <button onclick="send();" class="btn btn-lg btn-success btn-block">Login</button>
+                            </fieldset>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/sb-admin-2.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.md5.js"></script>
+
+</body>
+<script>
+function send(){
+$.ajax({
+    type: 'GET',
+    url: 'http://api.barvius.pp.ua',
+    data: {act:"login",user:$('#login').val(),password:$('#password').val()},
+        success: function(data){
+          if(data.code == "200"){
+              alert(data.user);
+              $.cookie("tooken", data.tooken);
+              $.cookie("user", data.user);
+              $(window).attr('location','angular4.html');
+          }
+          if(data.code == "401"){
+              $("#err").fadeTo(2000, 500).slideUp(500, function(){
+    $("#err").toggleClass("hidden");
+});
+              $.removeCookie("tooken");
+              $.removeCookie("user");
+
+          }
+        }
+});
+    };
+
+</script>
+</html>

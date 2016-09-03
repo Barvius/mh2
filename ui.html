@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Universal Home Controller</title>
+
+		<!--This meta data is to keep the view compatible with desktop and mobile devices -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Import styling sheets -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="css/bootstrap-switch.css" >
+
+		<!-- for MetsiMenu -->
+		<link rel="stylesheet" href="Extensions/metisMenu-master/dist/metisMenu.min.css">
+	</head>
+
+	<body>
+		<!-- The top naviagtion bar -->
+		<div class="navbar navbar-inverse navbar-static-top">
+			<div class="container">
+				<a href="index.html" class="navbar-brand">UHC</a>
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<div class="collapse navbar-collapse navHeaderCollapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Media<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="https://www.facebook.com/UniversalHomeController">Facebook</a> </li>
+								<li><a href="#">Google+</a> </li>
+								<li><a href="https://www.youtube.com/channel/UCZVjcHWD7dauvnZ_YinwcCA">YouTube</a> </li>
+							</ul>
+						</li>
+						<li><button href="index.html" type="button" class="navbar-btn btn-danger btn">Sign Out</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- A fluid container to hold the list of subsystems -->
+		<div class="container-fluid">
+			<!-- The outer list of stacked elements -->
+		   <ul class="nav nav-pills nav-stacked" id="stacked-menu">
+		        <li class="doorlocklist">
+					<a href="#">Door Locks<span class="caret arrow"></span></a>
+					<!-- The list of doors -->
+					<ul class="nav nav-pills nav-stacked" id="doorlocks">
+						<li>
+							<a href="#">DoorLock0<span class="caret arrow"></span></a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="0">
+    								<button class="btn btn-primary active lockbtn">Lock</button>
+    								<button class="btn btn-default unlockbtn">Unlock</button>
+ 	 							</div>
+ 	 							<div class="input-group" id="0">
+									<span class="input-group-btn" id="0">
+										<button class="btn btn-primary doorlockstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control doorlockstatus" placeholder="status" id="0">
+								</div>
+							</ul>
+						</li>
+					</ul>
+		        </li>
+
+		        <li class="currentsensorlist">
+					<a href="#">Current Sensors<span class="caret arrow"></span></a>
+					<!-- The list of lights -->
+					<ul class="nav nav-pills nav-stacked" id="currentsensor">
+						<li><a href="#">None</a></li>
+					</ul>
+		        </li>
+
+		        <li class = "lightswitchlist">
+		        	<a href="#">Light Switches<span class="caret arrow"></span></a>
+		        	<ul class="nav nav-pills nav-stacked" id="lightswitches">
+			            <li>
+							<a href="#">LightSwitch0</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="0">
+    								<button class="btn btn-default lightonbtn">ON</button>
+    								<button class="btn btn-primary active lightoffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group" id="0">
+									<span class="input-group-btn" id="0">
+										<button class="btn btn-primary lightswstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control lightswstatus" placeholder="status" id="0">
+								</div>
+							</ul>
+						</li>
+			        </ul>
+			  	</li>
+
+		        <li><a href="#">HVAC Wireless<span class="caret arrow"></span></a>
+		        	<ul class="nav nav-pills nav-stacked" id="hvac">
+			            <li>
+			            	<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-primary" type="button" id="destempbtn">Set Desired Temp</button>
+								</span>
+								<input type="text" class="form-control" placeholder="Desired Temperature" id="desTemp">
+							</div>
+						</li>
+			            <li>
+			            	<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-primary" type="button" id="tempreqbtn">Actual Temperature</button>
+								</span>
+								<input type="text" class="form-control" placeholder="Actual Temperature" id="actTemp">
+							</div>
+						</li>
+			            <li>
+    						<div class="btn-group">
+								<button type="button" class="btn btn-primary" id="heatbtn">HEAT</button>
+								<button type="button" class="btn btn-primary" id="hvacoffbtn">OFF</button>
+								<button type="button" class="btn btn-primary" id="acbtn">AC</button>
+							</div>
+						</li>
+						<li>
+							<a href="#">Status</a>
+							<ul class="nav nav-pills nav-stacked" id="hvacstatus">
+								<li>
+									<div>
+										<button class="btn btn-primary" type="button" id="hvacstatusbtn">Status</button>
+									</div>
+								</li>
+								<li>
+									<div class="input-group">
+  										<span class="input-group-addon">Heat1</span>
+  											<input type="text" class="form-control" placeholder="Heat1" aria-describedby="basic-addon1" id="heat1status">
+									</div>
+								</li>
+								<li>
+									<div class="input-group">
+  										<span class="input-group-addon">Heat2</span>
+  											<input type="text" class="form-control" placeholder="Heat2" aria-describedby="basic-addon1" id="heat2status">
+									</div>
+								</li>
+								<li>
+									<div class="input-group">
+  										<span class="input-group-addon">AC</span>
+  											<input type="text" class="form-control" placeholder="AC Status" aria-describedby="basic-addon1" id="acstatus">
+									</div>
+								</li>
+								<li>
+									<div class="input-group">
+  										<span class="input-group-addon">FAN</span>
+  											<input type="text" class="form-control" placeholder="Fan Status" aria-describedby="basic-addon1" id="fanstatus">
+									</div>
+								</li>
+							</ul>
+						</li>
+			    	</ul>
+				</li>
+
+				<li><a href="#">Power Outlets<span class="caret arrow"></span></a>
+		        	<ul class="nav nav-pills nav-stacked" id="poweroutlet">
+			           <li>
+							<a href="#">PowerOutlet0</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="0">
+    								<button class="btn btn-primary active ponbtn">ON</button>
+    								<button class="btn btn-default poffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group" id="0">
+									<span class="input-group-btn" id="0">
+										<button class="btn btn-primary poutletstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control poutletstatus" placeholder="status" id="0">
+								</div>
+							</ul>
+						</li>
+						<li>
+							<a href="#">PowerOutlet1</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="1">
+    								<button class="btn btn-primary active ponbtn">ON</button>
+    								<button class="btn btn-default poffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group" id="1">
+									<span class="input-group-btn" id="1">
+										<button class="btn btn-primary poutletstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control poutletstatus" placeholder="status" id="1">
+								</div>
+							</ul>
+						</li>
+			    	</ul>
+				</li>
+				<li><a href="#">Power Source Control<span class="caret arrow"></span></a>
+		        	<ul class="nav nav-pills nav-stacked" id="poweroutlet">
+			           <li>
+							<a href="#">Circuit0</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="0">
+    								<button class="btn btn-primary active circuitonbtn">ON</button>
+    								<button class="btn btn-default circuitoffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group">
+									<span class="input-group-btn" id="0">
+										<button class="btn btn-primary circuitstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control circuitstatus" placeholder="status" id="0">
+								</div>
+			            		<div class="input-group" id="0">
+									<span class="input-group-btn" id="0">
+										<button class="btn btn-primary poreqbtn" type="button">Power</button>
+									</span>
+									<input type="text" class="form-control poreq" placeholder="Actual Power" id="0">
+								</div>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Circuit1</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="1">
+    								<button class="btn btn-primary active circuitonbtn">ON</button>
+    								<button class="btn btn-default circuitoffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group">
+									<span class="input-group-btn" id="1">
+										<button class="btn btn-primary circuitstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control circuitstatus" placeholder="status" id="1">
+								</div>
+								<div class="input-group" id="1">
+									<span class="input-group-btn" id="1">
+										<button class="btn btn-primary poreqbtn" type="button">Power</button>
+									</span>
+									<input type="text" class="form-control poreq" placeholder="Actual Power" id="1">
+								</div>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Circuit2</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="2">
+    								<button class="btn btn-primary active circuitonbtn">ON</button>
+    								<button class="btn btn-default circuitoffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group">
+									<span class="input-group-btn" id="2">
+										<button class="btn btn-primary circuitstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control circuitstatus" placeholder="status" id="2">
+								</div>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Circuit3</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="3">
+    								<button class="btn btn-primary active circuitonbtn">ON</button>
+    								<button class="btn btn-default circuitoffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group">
+									<span class="input-group-btn" id="3">
+										<button class="btn btn-primary circuitstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control circuitstatus" placeholder="status" id="3">
+								</div>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Circuit4</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="4">
+    								<button class="btn btn-primary active circuitonbtn">ON</button>
+    								<button class="btn btn-default circuitoffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group">
+									<span class="input-group-btn" id="4">
+										<button class="btn btn-primary circuitstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control circuitstatus" placeholder="status" id="4">
+								</div>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Circuit5</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="5">
+    								<button class="btn btn-primary active circuitonbtn">ON</button>
+    								<button class="btn btn-default circuitoffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group">
+									<span class="input-group-btn" id="5">
+										<button class="btn btn-primary circuitstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control circuitstatus" placeholder="status" id="5">
+								</div>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Circuit6</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="6">
+    								<button class="btn btn-primary active circuitonbtn">ON</button>
+    								<button class="btn btn-default circuitoffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group">
+									<span class="input-group-btn" id="6">
+										<button class="btn btn-primary circuitstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control circuitstatus" placeholder="status" id="6">
+								</div>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Circuit7</a>
+							<ul class="nav nav-pills nav-stacked">
+								<div class="btn-group btn-toggle" id="7">
+    								<button class="btn btn-primary active circuitonbtn">ON</button>
+    								<button class="btn btn-default circuitoffbtn">OFF</button>
+ 	 							</div>
+ 	 							<div class="input-group">
+									<span class="input-group-btn" id="7">
+										<button class="btn btn-primary circuitstatusbtn" type="button">Status</button>
+									</span>
+									<input type="text" class="form-control circuitstatus" placeholder="status" id="7">
+								</div>
+							</ul>
+						</li>
+			    	</ul>
+				</li>
+		    </ul>
+		</div>
+
+		<div class="navbar navbar-inverse navbar-fixed-bottom">
+			<div class="container">
+				<button href="#" id="spark-login" type="button" class="navbar-btn btn">Spark Login</button>
+				<button href="index.html" type="button" id="init" class="navbar-btn btn">Initialize</button>
+			</div>
+		</div>
+
+		<!--Including jquery and javascript scripts -->
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-switch.js"></script>
+		<!-- Spark Core Scripts -->
+		<script src="js/spark.min.js"></script>
+	    <script src="uhc_sparkcore.js"></script>
+		<!-- MetsiMenu extension-->
+		<script src="Extensions/metisMenu-master/dist/metisMenu.min.js"></script>
+
+		<script src="switch.js"></script>
+		<script src="metis_menu.js"></script>
+
+		<!-- Used to add new door to the list - To be edited-->
+		<script type="text/javascript">
+		// 	var main = function () {
+		// 		"use strict";
+		// 		$(".doorlist button").on("click", function (event) {
+		// 			var $new_elem;
+		// 			if ($(".doorlist input").val() !== "") {
+		// 				$new_elem = $("<li><a>").text($(".doorlist input").val());
+		// 				$("#doors").append("<li><a>"+$('.doorlist input').val()+"</a></li>");
+		// 				var ul = document.getElementById("doors");
+		// 				var li = document.createElement("li");
+		// 				li.appendChild(document.createTextNode("Your list item text"));
+		// 				ul.appendChild(li);
+		// 			}
+		// 		});
+		// 	};
+		// 	$(document).ready(main);
+		// </script>
+		<script type="text/javascript">
+		// 	$('#init').on('click', function () {
+  		//        var onlineDevices = ["Door1", "Door2", "CurrentSensor1"];
+		// 		  for (var i = 0; i < onlineDevices.length; i++) {
+		// 		    if(onlineDevices[i].indexOf("Door") > -1){
+		// 		      $("#doorlocks").append("<li><a>Door"+i+"</a></li>");
+		// 		    }else if(onlineDevices[i].indexOf("Current") > -1){
+		// 		      $("#currentsensor").append("<li><a>Current Sensor"+i+"</a></li>");
+		// 		    }
+
+		// 		  };
+  	    // 	})
+		</script>
+	</body>
+</html>
